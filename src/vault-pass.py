@@ -2,6 +2,7 @@ import os
 import string
 import random
 import re
+import colorama
 
 # Function to generate a random password of a given length
 def generate_password(length):
@@ -14,16 +15,16 @@ def save_passwords():
     password = input("Password: ")
     with open("passwords.pw", "a") as file:
         file.write(f"{password}\n")
-        print("Password saved to passwords.pw")
+        print(colorama.Fore.GREEN + "Password saved to passwords.pw")
 
 # Function to read passwords from a file
 def read_passwords():
     if os.path.exists("passwords.pw"):
         with open("passwords.pw", "r") as file:
             content = file.read()
-            print(content)
+            print(colorama.Fore.GREEN + content)
     else:
-        print("No passwords saved yet.")
+        print(colorama.Fore.YELLOW + "No passwords saved yet.")
 
 # Function to evaluate the strength of a password
 def evaluate_password_strength(password):
@@ -47,22 +48,22 @@ def evaluate_password_strength(password):
     
     # Return strength level based on the number of categories present
     if strength == 1:
-        return "Low"
+        return (colorama.Fore.RED + "Low")
     elif strength == 2:
-        return "Medium"
+        return (colorama.Fore.YELLOW + "Medium")
     elif strength >= 3:
-        return "Strong"
+        return (colorama.Fore.GREEN + "Strong")
     else:
-        return "Very Weak"
+        return (colorama.Fore.RED + "Very Weak")
 
 # Main menu loop
 while True:
     # Display menu options
-    print("\nGenerate password [01]")
-    print("Save password to a pw file [02]")
-    print("Read password from a pw file [03]")
-    print("Check password [04]")
-    print("Exit [05]")
+    print(colorama.Fore.WHITE + "\nGenerate password [01]")
+    print(colorama.Fore.WHITE + "Save password to a pw file [02]")
+    print(colorama.Fore.WHITE + "Read password from a pw file [03]")
+    print(colorama.Fore.WHITE + "Check password [04]")
+    print(colorama.Fore.WHITE + "Exit [05]")
 
     # Get user input for selecting an option
     select = input("Select an option: ")
@@ -77,10 +78,10 @@ while True:
     # Execute the selected option
     if select == option1:
         password = generate_password(16)
-        print(f"Generated password: {password}")
+        print(f"Generated password: {colorama.Fore.GREEN + password}")
         with open("passwords.pw", "a") as file:
             file.write(f"{password}\n")
-            print("Password saved to passwords.pw")
+            print(colorama.Fore.GREEN + "Password saved to passwords.pw")
 
     elif select == option2:
         save_passwords()
@@ -98,4 +99,4 @@ while True:
         break
 
     else:
-        print("Invalid option selected. Please select a valid option.")
+        print(colorama.Fore.RED + "Invalid option selected. Please select a valid option.")
