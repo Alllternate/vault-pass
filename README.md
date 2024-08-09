@@ -25,6 +25,14 @@ git@github.com:Alllternate/vault-pass.git
 
 # How to use
 
+## Install dependencies
+
+For the project to run correctly you must install the project dependencies, you can do it with the following command.
+
+````
+pip install -r requirements.txt
+````
+
 ## Generated Password
 
 A length must be specified, for example 16, once specified the password is generated and automatically saved in a .pw file.
